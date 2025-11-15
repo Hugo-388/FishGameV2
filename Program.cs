@@ -1,2 +1,2 @@
-﻿using var game = new FishGameV2.Game1();
+﻿using var game = new FishGameV2.myGame();
 game.Run();
