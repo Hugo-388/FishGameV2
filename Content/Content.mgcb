@@ -26,7 +26,7 @@
 /processorParam:TextureFormat=Color
 /build:btnJouer.png
 
-#begin btsQuitter.png
+#begin btnQuitter.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -36,7 +36,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:btsQuitter.png
+/build:btnQuitter.png
 
 #begin Carte.png
 /importer:TextureImporter

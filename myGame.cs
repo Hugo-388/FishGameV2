@@ -8,17 +8,26 @@ public class myGame : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-
+    
+    private Menu _menu;
+    
     public myGame()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        
+        Window.AllowUserResizing = true;
     }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _graphics.PreferredBackBufferWidth = 1280;
+        _graphics.PreferredBackBufferHeight = 720;
+        _graphics.ApplyChanges();
+
+      
+        _menu = new Menu();
 
         base.Initialize();
     }
@@ -27,7 +36,8 @@ public class myGame : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+      
+        _menu.LoadContent(Content);
     }
 
     protected override void Update(GameTime gameTime)
@@ -36,8 +46,26 @@ public class myGame : Game
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
+        if (Keyboard.GetState().IsKeyDown(Keys.F11))
+        {
+            _graphics.ToggleFullScreen();
+        }
 
+        MouseState currentMouseState = Mouse.GetState();
+        
+        MenuAction action = _menu.Update(gameTime, currentMouseState, GraphicsDevice);
+        
+        switch (action)
+        {
+            case MenuAction.Play:
+                //TODO Lancer le jeux
+                break;
+                
+            case MenuAction.Exit:
+                Exit();
+                break;
+        }
+        
         base.Update(gameTime);
     }
 
@@ -45,7 +73,11 @@ public class myGame : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+        
+        _menu.Draw(_spriteBatch, GraphicsDevice);
+
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
