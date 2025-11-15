@@ -88,11 +88,11 @@ public class Menu
         return _menuAction;
     }
 
-    public void Draw(SpriteBatch _spriteBatch, GraphicsDevice graphicsDevice)
+    public void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
     {
-        _spriteBatch.Draw(_map, graphicsDevice.Viewport.Bounds, Color.White);        
+        spriteBatch.Draw(_map, graphicsDevice.Viewport.Bounds, Color.White);        
     
-        _spriteBatch.Draw(_btnJouer, _btnJouerRect, _jouerColor);
-        _spriteBatch.Draw(_btnQuitter, _btnQuitterRect, _quitterColor);
+        spriteBatch.Draw(_btnJouer, _btnJouerRect, _jouerColor);
+        spriteBatch.Draw(_btnQuitter, _btnQuitterRect, _quitterColor);
     }
 }

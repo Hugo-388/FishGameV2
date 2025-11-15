@@ -10,7 +10,7 @@ public class myGame : Game
     private SpriteBatch _spriteBatch;
     
     private Menu _menu;
-    
+
     public myGame()
     {
         _graphics = new GraphicsDeviceManager(this);
