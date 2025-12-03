@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
+using MonoGame.Extended.Serialization.Xml;
 
 namespace FishGameV2;
 
@@ -20,33 +21,27 @@ public class ParserJeux
     }
 
 
-   static public HashSet<String> ParserInfosJoueur(String filename)
+   static public int ParserPositionJoueurX(String filename)
     {
         //Parse le fichier
         XmlReader reader = XmlReader.Create(filename);
-        HashSet<String> position = new HashSet<String>();
-        
+        int x = 0;
 
         while (reader.Read())
         {
             switch (reader.NodeType)
             {
                 case XmlNodeType.Element:
-                    if (reader.Name == "General")
-                    {
-                        
                         if (reader.Name == "Joueur")
-                        {
-                            reader.MoveToFirstAttribute();
-                            position.Add(reader.Value);
-                            Console.WriteLine("Joueur: " + reader.Value);
+                        { 
+                            x = reader.GetAttributeInt("x");
+                           //int y = reader.GetAttributeInt("y");
+                           //position.Add(x);
+                           //position.Add(y);
                         }
-                    }
-                    
-                    break;
+                        break;
             }
         }
-
-        return position;
+        return x;
     }
 }
